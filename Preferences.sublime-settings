@@ -1,0 +1,16 @@
+{
+    "caret_extra_bottom": 3,
+    "caret_extra_top": 3,
+    "caret_extra_width": 2,
+    "color_scheme": "Packages/Oceanic Next Color Scheme/Oceanic Next.tmTheme",
+    "font_size": 12,
+    "highlight_line": true,
+    "ignored_packages":
+    [
+        "Vintage"
+    ],
+    "overlay_scroll_bars": "enabled",
+    "tab_size": 4,
+    "theme": "Broceanic.sublime-theme",
+    "translate_tabs_to_spaces": true
+}

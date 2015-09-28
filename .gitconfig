@@ -1,0 +1,47 @@
+# This is Git's per-user configuration file.
+[core]
+	user = Alexandre Rieux
+	email = alex.r3165@gmail.com
+	editor = emacs
+    excludesfile = ~/.gitignore
+    attributesfile = ~/.gitattributes
+
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+    d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+    c = commit -am
+    up = pull
+    p = push
+    s = status -s
+
+[push]
+	default = current
+
+[user]
+	name = Alexandre Rieux
+	email = alexr.3165@gmail.com
+
+[color]
+    ui = always
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[color "diff-highlight"]
+    oldNormal = "red bold"
+    oldHighlight = "red bold 52"
+    newNormal = "green bold"
+    newHighlight = "green bold 22"
