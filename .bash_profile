@@ -8,6 +8,9 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
+alias pie="cd ~/Documents/developpement/piemapping/apple-pie"
+alias piemap="pie && subl . && open -a /Applications/Google\ Chrome.app 'http://localhost:3000' && npm run develop"
+
 # lock computer from command line
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
