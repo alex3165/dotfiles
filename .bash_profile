@@ -1,3 +1,4 @@
+
 # Aliases ---------------
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
@@ -8,8 +9,11 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
-alias pie="cd ~/Documents/developpement/piemapping/apple-pie"
-alias piemap="pie && subl . && open -a /Applications/Google\ Chrome.app 'http://localhost:3000' && npm run develop"
+alias applepie="cd ~/Development/piemapping/apple-pie"
+alias pietruck="cd ~/Development/piemapping/PieTruck"
+alias piemap="applepie && subl . && open -a /Applications/Google\ Chrome.app 'http://localhost:3000' && npm run develop"
+
+
 
 # lock computer from command line
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
@@ -41,7 +45,11 @@ alias fs="stat -f \"%z bytes\""
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
-
+export GOPATH=$HOME/Development/go
+export PATH=$PATH:$HOME/bin:/usr/local/mysql/bin:$GOPATH/bin
+export PRIVATE_IP=192.168.99.100
+export REGION=europe-west1
+export ZONE=europe-west1-b
 
 # Functions ---------------
 # Create a new directory and enter it
@@ -55,4 +63,14 @@ function server() {
     # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
     # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
     python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
+}
+
+function replaceScheduler() {
+  applepie
+  cd submodules/pie-scheduler
+  git pull
+  cd ../../
+  rm -rf node_modules/pieScheduler
+  npm install
+  echo "Don't forget to change path to pie scheduler in jsx files if changed"
 }

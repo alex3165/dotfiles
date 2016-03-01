@@ -1,13 +1,13 @@
 # This is Git's per-user configuration file.
 [core]
-	user = Alexandre Rieux
-	email = alex.r3165@gmail.com
-	editor = emacs
+    user = Alexandre Rieux
+    email = alex.r3165@gmail.com
+    editor = emacs
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
 
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
     d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
     c = commit -am
     up = pull
@@ -15,11 +15,11 @@
     s = status -s
 
 [push]
-	default = current
+    default = current
 
 [user]
-	name = Alexandre Rieux
-	email = alexr.3165@gmail.com
+    name = Alexandre Rieux
+    email = alexr.3165@gmail.com
 
 [color]
     ui = always
@@ -46,6 +46,6 @@
     newNormal = "green bold"
     newHighlight = "green bold 22"
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
