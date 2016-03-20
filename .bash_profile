@@ -11,9 +11,10 @@ alias -- -="cd -"
 
 alias applepie="cd ~/Development/piemapping/apple-pie"
 alias pietruck="cd ~/Development/piemapping/PieTruck"
+alias pie="cd ~/Development/piemapping"
 alias piemap="applepie && subl . && open -a /Applications/Google\ Chrome.app 'http://localhost:3000' && npm run develop"
-
-
+alias dl="docker logs"
+alias dme="docker-machine env && eval $(docker-machine env)"
 
 # lock computer from command line
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
@@ -42,7 +43,7 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias fs="stat -f \"%z bytes\""
 
 # Env variables ---------------
-export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$"
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 export GOPATH=$HOME/Development/go
@@ -50,6 +51,8 @@ export PATH=$PATH:$HOME/bin:/usr/local/mysql/bin:$GOPATH/bin
 export PRIVATE_IP=192.168.99.100
 export REGION=europe-west1
 export ZONE=europe-west1-b
+
+alias gopie="cd $GOPATH/src/github.com/piemapping"
 
 # Functions ---------------
 # Create a new directory and enter it
