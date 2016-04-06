@@ -16,6 +16,8 @@ alias piemap="applepie && subl . && open -a /Applications/Google\ Chrome.app 'ht
 alias dl="docker logs"
 alias dme="docker-machine env && eval $(docker-machine env)"
 
+alias ts="cd ~/Development/travelsharing"
+
 # lock computer from command line
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
