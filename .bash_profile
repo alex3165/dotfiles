@@ -9,6 +9,7 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
+alias w="cd ~/Development/travelsharing"
 alias applepie="cd ~/Development/piemapping/apple-pie"
 alias pietruck="cd ~/Development/piemapping/PieTruck"
 alias pie="cd ~/Development/piemapping"

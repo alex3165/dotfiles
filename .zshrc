@@ -4,7 +4,8 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/rieuxalexandre/.oh-my-zsh
-
+alias uuid="python -c 'import sys,uuid; sys.stdout.write(uuid.uuid4().hex)' | pbcopy && pbpaste && echo"
+alias food="python3 ~/Development/food/main.py"
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -65,12 +66,16 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='emacs'
- else
-   export EDITOR='emacs'
- fi
+# Search for neovim, fallback to vim
+if which nvim >/dev/null; then
+  export VISUAL="$(which nvim)"
+elif which vim >/dev/null; then
+  export VISUAL="$(which vim)"
+else
+  export VISUAL="vim"
+fi
+
+export EDITOR=$VISUAL
 
 
 auto-ls () {
@@ -79,6 +84,28 @@ auto-ls () {
     hash gls >/dev/null 2>&1 && CLICOLOR_FORCE=1 gls -aFh --color --group-directories-first || ls
 }
 chpwd_functions=( auto-ls $chpwd_functions )
+
+
+# ZSH standalone npm install autocompletion. Add this to ~/.zshrc file.
+_npm_install_completion() {
+    local si=$IFS
+
+    # if 'install' or 'i ' is one of the subcommands, then...
+    if [[ ${words} =~ 'install' ]] || [[ ${words} =~ 'i ' ]]; then
+
+	# add the result of `ls ~/.npm` (npm cache) as completion options
+	compadd -- $(COMP_CWORD=$((CURRENT-1)) \
+	    COMP_LINE=$BUFFER \
+	    COMP_POINT=0 \
+	    ls ~/.npm -- "${words[@]}" \
+2>/dev/null)
+fi
+
+IFS=$si
+}
+
+compdef _npm_install_completion 'npm'
+## END ZSH npm install autocompletion
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
