@@ -4,8 +4,6 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/rieuxalexandre/.oh-my-zsh
-alias uuid="python -c 'import sys,uuid; sys.stdout.write(uuid.uuid4().hex)' | pbcopy && pbpaste && echo"
-alias food="python3 ~/Development/food/main.py"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

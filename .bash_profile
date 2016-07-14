@@ -18,6 +18,8 @@ alias dl="docker logs"
 alias dme="docker-machine env && eval $(docker-machine env)"
 alias dps="docker ps"
 alias dev="cd ~/Development"
+alias uuid="python -c 'import sys,uuid; sys.stdout.write(uuid.uuid4().hex)' | pbcopy && pbpaste && echo"
+alias food="python3 ~/Development/food/main.py"
 
 # lock computer from command line
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
