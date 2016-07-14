@@ -5,7 +5,6 @@ if [ "$1" == "-h" ]; then
   exit 0
 fi
 
-
 export DOTFILES_DIR
 
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -14,15 +13,16 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Create the symlinks
 case $1 in
-  "server")
+  "local")
     # # Bunch of symlinks
     ln -sfv "$DOTFILES_DIR/.bash_profile" ~
     ln -sfv "$DOTFILES_DIR/.gitconfig" ~
     ln -sfv "$DOTFILES_DIR/.gitignore" ~
+    ln -sfv "$DOTFILES_DIR/.zshrc" ~
     ;;
-  "local")
+  "server")
     # # Bunch of symlinks
-    ln -sfv "$DOTFILES_DIR/.bash_profile_server" "~/.bash_profile"
+    ln -sfv "$DOTFILES_DIR/.bash_profile_server" ~/.bash_profile
     ln -sfv "$DOTFILES_DIR/.gitconfig" ~
     ln -sfv "$DOTFILES_DIR/.gitignore" ~
     ;;
