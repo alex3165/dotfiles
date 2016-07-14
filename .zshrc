@@ -6,6 +6,7 @@ fi
 export ZSH=/Users/rieuxalexandre/.oh-my-zsh
 alias uuid="python -c 'import sys,uuid; sys.stdout.write(uuid.uuid4().hex)' | pbcopy && pbpaste && echo"
 alias food="python3 ~/Development/food/main.py"
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each

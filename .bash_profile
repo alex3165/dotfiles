@@ -16,8 +16,8 @@ alias pie="cd ~/Development/piemapping"
 alias piemap="applepie && subl . && open -a /Applications/Google\ Chrome.app 'http://localhost:3000' && npm run develop"
 alias dl="docker logs"
 alias dme="docker-machine env && eval $(docker-machine env)"
-
-alias ts="cd ~/Development/travelsharing"
+alias dps="docker ps"
+alias dev="cd ~/Development"
 
 # lock computer from command line
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
@@ -69,14 +69,4 @@ function server() {
     # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
     # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
     python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
-}
-
-function replaceScheduler() {
-  applepie
-  cd submodules/pie-scheduler
-  git pull
-  cd ../../
-  rm -rf node_modules/pieScheduler
-  npm install
-  echo "Don't forget to change path to pie scheduler in jsx files if changed"
 }
