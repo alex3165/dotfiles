@@ -120,3 +120,12 @@ compdef _npm_install_completion 'npm'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/rieuxalexandre/Development/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/rieuxalexandre/Development/google-cloud-sdk/completion.zsh.inc'
+
+# added by travis gem
+[ -f /Users/rieuxalexandre/.travis/travis.sh ] && source /Users/rieuxalexandre/.travis/travis.sh
