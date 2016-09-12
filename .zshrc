@@ -57,7 +57,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
+alias sshcopy="cat ~/.ssh/id_rsa.pub | pbcopy"
+. ~/bin/z/z.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -115,3 +117,5 @@ IFS=$si
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
