@@ -1,23 +1,9 @@
 
 # Aliases ---------------
-# Easier navigation: .., ..., ~ and -
-alias ..="cd .."
-alias cd..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
 
 alias w="cd ~/Development/travelsharing"
-alias applepie="cd ~/Development/piemapping/apple-pie"
-alias pietruck="cd ~/Development/piemapping/PieTruck"
-alias pie="cd ~/Development/piemapping"
-alias piemap="applepie && subl . && open -a /Applications/Google\ Chrome.app 'http://localhost:3000' && npm run develop"
-alias dl="docker logs"
-alias dme="docker-machine env && eval $(docker-machine env)"
 alias dps="docker ps"
-alias dev="cd ~/Development"
+alias dev="cd ~/development"
 alias uuid="python -c 'import sys,uuid; sys.stdout.write(uuid.uuid4().hex)' | pbcopy && pbpaste && echo"
 alias food="python3 ~/Development/food/main.py"
 
@@ -27,18 +13,6 @@ alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resourc
 # Edit host file
 alias hosts='sudo $EDITOR /etc/hosts'
 
-alias ls='ls -GFh'
-alias ll='ls -laG'
-alias l='ls -lG'
-alias la="ls -l | awk '
-{
-  k=0;
-  for (i=0;i<=8;i++)
-    k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));
-  if (k)
-    printf(\"%0o \",k);
-  printf(\" %9s  %3s %2s %5s  %6s  %s %s %s\n\", \$3, \$6, \$7, \$8, \$5, \$9,\$10, \$11);
-}'"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com" # Public ip
@@ -48,16 +22,8 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias fs="stat -f \"%z bytes\""
 
 # Env variables ---------------
-export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
-export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
-export GOPATH=$HOME/Development/go
-export PATH=$PATH:$HOME/bin:/usr/local/mysql/bin:$GOPATH/bin
-export PRIVATE_IP=192.168.99.100
 export REGION=europe-west1
 export ZONE=europe-west1-b
-
-alias gopie="cd $GOPATH/src/github.com/piemapping"
 
 # Functions ---------------
 # Create a new directory and enter it

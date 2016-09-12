@@ -1,14 +1,12 @@
-if [ -f ~/.bash_profile ]; then
-  source ~/.bash_profile
-fi
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/rieuxalexandre/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -55,17 +53,18 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+source $ZSH/oh-my-zsh.sh
+
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/rieuxalexandre/bin:/usr/local/mysql/bin:/Users/rieuxalexandre/Development/go/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin"
 
-source $ZSH/oh-my-zsh.sh
+# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Search for neovim, fallback to vim
+# Preferred editor for local and remote sessions
 if which nvim >/dev/null; then
   export VISUAL="$(which nvim)"
 elif which vim >/dev/null; then
@@ -84,7 +83,6 @@ auto-ls () {
 }
 chpwd_functions=( auto-ls $chpwd_functions )
 
-
 # ZSH standalone npm install autocompletion. Add this to ~/.zshrc file.
 _npm_install_completion() {
     local si=$IFS
@@ -94,17 +92,14 @@ _npm_install_completion() {
 
 	# add the result of `ls ~/.npm` (npm cache) as completion options
 	compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-	    COMP_LINE=$BUFFER \
-	    COMP_POINT=0 \
-	    ls ~/.npm -- "${words[@]}" \
+	        COMP_LINE=$BUFFER \
+	        COMP_POINT=0 \
+	        ls ~/.npm -- "${words[@]}" \
 2>/dev/null)
 fi
 
 IFS=$si
 }
-
-compdef _npm_install_completion 'npm'
-## END ZSH npm install autocompletion
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -120,12 +115,3 @@ compdef _npm_install_completion 'npm'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# The next line updates PATH for the Google Cloud SDK.
-source '/Users/rieuxalexandre/Development/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-source '/Users/rieuxalexandre/Development/google-cloud-sdk/completion.zsh.inc'
-
-# added by travis gem
-[ -f /Users/rieuxalexandre/.travis/travis.sh ] && source /Users/rieuxalexandre/.travis/travis.sh
