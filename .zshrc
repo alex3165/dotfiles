@@ -56,8 +56,10 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
-alias sshcopy="cat ~/.ssh/id_rsa.pub | pbcopy"
+alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias sshc="cat ~/.ssh/id_rsa.pub | pbcopy"
+alias dirc="pwd | pbcopy"
+
 . ~/bin/z/z.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -65,17 +67,8 @@ alias sshcopy="cat ~/.ssh/id_rsa.pub | pbcopy"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if which nvim >/dev/null; then
-  export VISUAL="$(which nvim)"
-elif which vim >/dev/null; then
-  export VISUAL="$(which vim)"
-else
-  export VISUAL="vim"
-fi
-
-export EDITOR=$VISUAL
-
+autoload -U promptinit; promptinit
+prompt pure
 
 auto-ls () {
     emulate -L zsh;
@@ -122,5 +115,11 @@ IFS=$si
 # Need fzf to be loaded
 source $HOME/development/emoji-cli/emoji-cli.zsh
 
-export NVM_DIR="/Users/alexandrer/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# tabtab source for yarn package
+# uninstall by removing these lines or running `tabtab uninstall yarn`
+[[ -f /usr/local/lib/node_modules/yarn-completions/node_modules/tabtab/.completions/yarn.zsh ]] && . /usr/local/lib/node_modules/yarn-completions/node_modules/tabtab/.completions/yarn.zsh
+### Added by the Bluemix CLI
+source /usr/local/Bluemix/bx/zsh_autocomplete
+
+# added by travis gem
+[ -f /Users/alexandrer/.travis/travis.sh ] && source /Users/alexandrer/.travis/travis.sh

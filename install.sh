@@ -18,6 +18,7 @@ case $1 in
     ln -sfv "$DOTFILES_DIR/.gitconfig" ~
     ln -sfv "$DOTFILES_DIR/.gitignore" ~
     ln -sfv "$DOTFILES_DIR/.zshrc" ~
+    ln -sfv "$DOTFILES_DIR/.zshenv" ~
     source ~/.zshrc
 
     # Install all the things
