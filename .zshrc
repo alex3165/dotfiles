@@ -20,7 +20,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -29,7 +29,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -55,13 +55,11 @@ plugins=(git)
 plugins=(zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
-# User configuration
+source ~/bin/z/z.sh
 
-alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+# User configuration
 alias sshc="cat ~/.ssh/id_rsa.pub | pbcopy"
 alias dirc="pwd | pbcopy"
-
-. ~/bin/z/z.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -75,25 +73,6 @@ auto-ls () {
     emulate -L zsh;
     # explicit sexy ls'ing as aliases arent honored in here.
     hash gls >/dev/null 2>&1 && CLICOLOR_FORCE=1 gls -aFh --color --group-directories-first || ls
-}
-chpwd_functions=( auto-ls $chpwd_functions )
-
-# ZSH standalone npm install autocompletion. Add this to ~/.zshrc file.
-_npm_install_completion() {
-    local si=$IFS
-
-    # if 'install' or 'i ' is one of the subcommands, then...
-    if [[ ${words} =~ 'install' ]] || [[ ${words} =~ 'i ' ]]; then
-
-	# add the result of `ls ~/.npm` (npm cache) as completion options
-	compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-	        COMP_LINE=$BUFFER \
-	        COMP_POINT=0 \
-	        ls ~/.npm -- "${words[@]}" \
-2>/dev/null)
-fi
-
-IFS=$si
 }
 
 # Compilation flags
@@ -112,9 +91,6 @@ IFS=$si
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Need fzf to be loaded
-source $HOME/development/emoji-cli/emoji-cli.zsh
 
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
