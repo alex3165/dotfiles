@@ -1,4 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
+  Plug 'altercation/vim-colors-solarized'
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
   Plug 'tpope/vim-repeat'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'Shougo/vimproc.vim', { 'do': 'make' }

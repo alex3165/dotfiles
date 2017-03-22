@@ -1,7 +1,3 @@
-" THEME
-set encoding=utf8
-set list
-
 " Invisibles
 set listchars=tab:▸\ ,eol:⨼
 
@@ -17,7 +13,7 @@ set nowrap
 set textwidth=0
 syntax enable
 set background=dark
-colorscheme adventurous
+colorscheme solarized
 
 let g:airline_theme="solarized"
 
@@ -31,8 +27,6 @@ filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
 NERDTree
-
-colorscheme default
 
 let g:gitgutter_map_keys=0
 
@@ -92,8 +86,4 @@ set splitright
 
 " Always use vertical diffs
 set diffopt+=vertical
-
-" Italics support
-set t_ZH=^[[3m
-set t_ZR=^[[23m
 
