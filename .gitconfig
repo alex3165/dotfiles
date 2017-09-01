@@ -19,8 +19,8 @@
     default = current
 
 [user]
-    name = Alexandre Rieux
-    email = alexr.3165@gmail.com
+	name = Alexandre Rieux
+	email = alexr.3165@gmail.com
 
 [color]
     ui = always
