@@ -4,15 +4,29 @@
 " --enable-rubyinterp --prefix=/usr --enable-ruby
 " Get latest from: http://github.com/lucasoman/Conf/raw/master/.vimrc
 
+call plug#begin('~/.vim/plugged')
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'quramy/tsuquyomi'
+call plug#end()
+
 " load pathogen
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 "set t_Co=256
 
 "{{{ Personal stuff
  	syntax enable
 	set background=dark
-	colorscheme solarized
+  " solarized options 
+  let g:solarized_termtrans = 1
+  colorscheme solarized
+  " Read vimrc from any repository vim is used from
+  set exrc
+  " Make it secure
+  set secure
 "}}}
 " misc options
 " {{{ interface
@@ -76,6 +90,7 @@ set omnifunc=syntaxcomplete#Complete
 " Let the filetype plugins do the work.
 set shiftwidth=2
 set tabstop=2
+set expandtab
 filetype indent on
 "set autoindent
 set cindent
@@ -173,23 +188,10 @@ set background=dark
 " }}}
 " {{{ filetype dependent
 autocmd BufNewFile,BufRead *.html setlocal commentstring=<!--%s-->
-" ruby commenstring
-autocmd FileType ruby setlocal commentstring=#%s
 " make help navigation easier
-autocmd FileType help nnoremap <buffer> <CR> <C-]>
-autocmd FileType help nnoremap <buffer> <BS> <C-T>
+" autocmd FileType help nnoremap <buffer> <CR> <C-]>
+" autocmd FileType help nnoremap <buffer> <BS> <C-T>
 "}}}
-"php syntax options {{{
-let php_sql_query = 1  "for SQL syntax highlighting inside strings
-let php_htmlInStrings = 1  "for HTML syntax highlighting inside strings
-"php_baselib = 1  "for highlighting baselib functions
-"php_asp_tags = 1  "for highlighting ASP-style short tags
-"php_parent_error_close = 1  "for highlighting parent error ] or )
-"php_parent_error_open = 1  "for skipping an php end tag, if there exists an open ( or [ without a closing one
-"php_oldStyle = 1  "for using old colorstyle
-"php_noShortTags = 1  "don't sync <? ?> as php
-let php_folding = 1  "for folding classes and functions
-" }}}
 "netrw options {{{
 let g:netrw_sort_sequence = '[\/]$,\.php,\.phtml,*,\.info$,\.swp$,\.bak$,\~$'
 "}}}
@@ -232,8 +234,6 @@ nmap <Leader>fx :setlocal filetype=xml<CR>:%s/></>\r</g<CR>:1,$!xmllint --format
 " comment/uncomment highlighted block
 vmap <Leader>cc :s!^!//!<CR>
 vmap <Leader>cu :s!^//!!<CR>
-" open local projects list file
-nmap <Leader>l :70vsplit ~/Dropbox/projects.list<CR>
 " fix syntax highlighting
 nmap <Leader>ss :syntax sync fromstart<CR>
 " toggle the tag list
@@ -246,45 +246,10 @@ nmap <left> <C-W>h
 nmap <right> <C-W>l
 nmap <up> <C-W>k
 nmap <down> <C-W>j
-com -range XselCopy :<line1>,<line2>w !xsel -i -b
-com XselPaste :r !xsel -o -b
+" com -range XselCopy :<line1>,<line2>w !xsel -i -b
+" com XselPaste :r !xsel -o -b
 vmap <silent> <Leader>xc :XselCopy<CR>
 nmap <silent> <Leader>xp :XselPaste<CR>
-"}}}
-" php {{{
-" syntax check
-nmap <Leader>ps :!php -l %<CR>
-" run current script
-nmap <Leader>pr :!php % \| less -F<CR>
-" lookup keyword in function reference
-nmap <Leader>ph :!pman <cword><CR>
-" create test method
-nmap <Leader>pt o<CR>/**<CR>@test<CR>/<CR>public function<TAB>
-" phpdoc comments
-nmap <Leader>cc o/**<CR>$Rev$<CR>$Date$<CR>$Id$<CR>$Author$<CR>$HeadURL$<CR><CR><CR><CR>@package <CR><BS>/<ESC>kkk$a 
-nmap <Leader>cb o/**<CR><CR><CR>@param <CR>@return <CR>@example <CR><BS>/<ESC>kkkkk$a 
-nmap <Leader>cv o/**<CR><CR><CR>@var <CR><BS>/<ESC>kkk$a 
-nmap <Leader>cp o/**<CR><CR><CR>@author Lucas Oman <me@lucasoman.com><CR>@param <CR>@return <CR>@example <CR><BS>/<ESC>kkkkkk$a 
-"}}}
-" svn {{{
-" set svn keywords
-nmap <Leader>sk :!svn propset svn:keywords "Rev Date Id Author HeadURL" %<CR>
-nmap <Leader>sp :call SvnPushFile()<CR>
-com! -nargs=1 Sstat :call SvnStatus("<args>")
-
-" view status of given path
-fun! SvnStatus(path)
-	tabe
-	setl buftype=nofile
-	exe "r !svn st ".a:path
-endfunction
-
-" call script to copy file to appropriate location in htdocs
-fun! SvnPushFile()
-	let line = getline('.')
-	let file = strpart(l:line,8)
-	exe "!~/lib/updatedev.php ".l:file
-endfunction
 "}}}
 "f keys {{{
 nmap <F2> :call ToggleColumns()<CR>
