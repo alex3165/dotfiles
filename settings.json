@@ -1,0 +1,32 @@
+{
+  // Place your settings in this file to overwrite the default settings
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true
+  },
+  "workbench.editor.enablePreview": false,
+  "editor.rulers": [
+    120
+  ],
+  "window.zoomLevel": 0,
+  "editor.tabSize": 2,
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "tslint.alwaysShowRuleFailuresAsWarnings": true,
+  "editor.fontLigatures": true,
+  "workbench.iconTheme": "vs-seti",
+  "workbench.startupEditor": "newUntitledFile",
+  "javascript.validate.enable": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.snippetSuggestions": "top",
+  "editor.formatOnSave": true,
+  "editor.tabCompletion": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.disableLanguages": [
+    "json",
+    "markdown",
+    "javascript",
+  ]
+}
