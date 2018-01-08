@@ -99,4 +99,4 @@ auto-ls () {
 source /usr/local/Bluemix/bx/zsh_autocomplete
 
 # added by travis gem
-[ -f /Users/alexandrer/.travis/travis.sh ] && source /Users/alexandrer/.travis/travis.sh
+# [ -f /Users/alexandrer/.travis/travis.sh ] && source /Users/alexandrer/.travis/travis.sh
